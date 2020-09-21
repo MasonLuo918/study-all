@@ -16,12 +16,7 @@ public class _347_前K个高频元素 {
                 map.put(i, 1);
             }
         }
-        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(k, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return map.get(o1) - map.get(o2);
-            }
-        });
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(k, Comparator.comparingInt(map::get));
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             int key = entry.getKey();
             if (priorityQueue.size() < k) {
