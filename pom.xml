@@ -13,6 +13,8 @@
         <module>written-examination</module>
         <module>wechat-robot</module>
         <module>java-advance-course</module>
+        <module>tcp</module>
+        <module>data-structure-algorithm</module>
     </modules>
 
 
