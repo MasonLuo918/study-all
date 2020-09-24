@@ -26,7 +26,7 @@ public class _227_基本计算器_II {
                 startIndex[0]++;
                 num = calculate(str, startIndex);
             }
-            if ((!isDigit(c) && c !=' ') || startIndex[0] == str.length - 1) {
+            if ((!isDigit(c) && c != ' ') || startIndex[0] == str.length - 1) {
                 switch (sign) {
                     case '+':
                         stack.push(num);
