@@ -15,7 +15,6 @@
         <module>java-advance-course</module>
         <module>tcp</module>
         <module>data-structure-algorithm</module>
+        <module>luckysheet</module>
     </modules>
-
-
 </project>
