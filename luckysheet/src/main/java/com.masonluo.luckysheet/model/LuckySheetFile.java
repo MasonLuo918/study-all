@@ -6,7 +6,7 @@ import java.util.List;
  * @author Masonluo
  * @date 2020-09-25 17:09
  */
-public class LuckySheet {
+public class LuckySheetFile {
     private String name;
 
     private Color color;
