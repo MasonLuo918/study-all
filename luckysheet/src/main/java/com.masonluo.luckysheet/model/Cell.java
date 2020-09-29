@@ -1,5 +1,7 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * 一个单元格
  *
@@ -8,63 +10,118 @@ package com.masonluo.luckysheet.model;
  */
 public class Cell {
 
+    /**
+     * 单元格的值格式，根据某种格式化格式来对单元格里面的文字进行格式化
+     */
+    @JsonProperty("ct")
     private CellType cellType;
 
+    /**
+     * 背景颜色，格式为#fff000
+     */
+    @JsonProperty("rf")
     private String background;
 
+    /**
+     * 字体
+     */
+    @JsonProperty("ff")
     private Font fontFamily;
 
+    /**
+     * 字体颜色
+     */
+    @JsonProperty("fc")
     private Color fontColor;
 
-    private Integer bold;
-
-    private Integer italic;
-
+    /**
+     * 字体大小
+     */
+    @JsonProperty("fs")
     private Integer fontSize;
 
+    /**
+     * 是否加粗，0为常规，1为加粗
+     */
+    @JsonProperty("bl")
+    private Integer bold;
+
+    /**
+     * 是否为斜体，0为常规，1为斜体
+     */
+    @JsonProperty("it")
+    private Integer italic;
+
+    /**
+     * 是否有删除线，0为常规，1为删除线
+     */
+    @JsonProperty("cl")
     private Integer cancelLine;
 
+    /**
+     * 垂直对齐类型，0为中间，1为上对齐，2为下对齐
+     */
+    @JsonProperty("vt")
     private Integer verticalType;
 
+    /**
+     * 水平对齐类型，0为居中，1为左对齐，2为右对齐
+     */
+    @JsonProperty("ht")
     private Integer horizontalType;
 
+    /**
+     * 合并的单元格
+     */
+    @JsonProperty("mc")
     private MergeCell mergeCell;
 
     /**
      * 文字旋转类型，0为不旋转，1为左下->右上，2为左上->右下，3为垂直
      */
+    @JsonProperty("tr")
     private Integer textRotate;
 
     /**
      * 文字旋转角度，介于0-180之间(包含0-180)
      */
+    @JsonProperty("rt")
     private Integer rotateText;
 
     /**
      * 文本换行，0为截断，1为溢出，2为自动换行
      */
+    @JsonProperty("tb")
     private Integer textBeak;
 
     /**
      * 原始值
      */
+    @JsonProperty("v")
     private String value;
 
     /**
      * 显示值
      */
+    @JsonProperty("m")
     private String monitor;
 
     /**
      * 公式
      */
+    @JsonProperty("f")
     private String function;
 
+    /**
+     * 批注
+     */
+    @JsonProperty("ps")
     private Comment comment;
 
     /**
      * 是否允许编辑
      */
+    @JsonProperty("ae")
     private Boolean allowEdit;
 
     public CellType getCellType() {

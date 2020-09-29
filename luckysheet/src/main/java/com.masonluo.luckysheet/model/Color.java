@@ -1,6 +1,8 @@
 package com.masonluo.luckysheet.model;
 
 /**
+ * (r,g,b) 三原色
+ *
  * @author Masonluo
  * @date 2020-09-25 16:04
  */

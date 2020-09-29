@@ -1,14 +1,16 @@
-package com.masonluo.luckysheet.model;
+package com.masonluo.luckysheet.model.border;
 
 /**
  * @author Masonluo
  * @date 2020-09-25 17:18
  */
-public class BorderInfo {
+public abstract class BorderInfo {
 
     private RangeType rangeType;
 
-
+    public BorderInfo(RangeType rangeType) {
+        this.rangeType = rangeType;
+    }
 
     public enum RangeType {
         CELL("cell"),

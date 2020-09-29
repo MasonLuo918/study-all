@@ -1,5 +1,7 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * 批注
  *
@@ -7,25 +9,42 @@ package com.masonluo.luckysheet.model;
  * @date 2020-09-25 16:44
  */
 public class Comment {
+
+    /**
+     * 批注左边框距离工作表边缘的位置
+     */
     private Integer left;
 
+    /**
+     * 批注上边框距离工作表边缘的位置
+     */
     private Integer top;
 
+    /**
+     * 批注边框宽度
+     */
     private Integer width;
 
+    /**
+     * 批注边框高度
+     */
     private Integer height;
 
     private String value;
 
-    private boolean isShow;
+    /**
+     * 是否显示
+     */
+    @JsonProperty("isshow")
+    private boolean show;
 
-    public Comment(Integer left, Integer top, Integer width, Integer height, String value, boolean isShow) {
+    public Comment(Integer left, Integer top, Integer width, Integer height, String value, boolean show) {
         this.left = left;
         this.top = top;
         this.width = width;
         this.height = height;
         this.value = value;
-        this.isShow = isShow;
+        this.show = show;
     }
 
     public Integer getLeft() {
@@ -69,10 +88,10 @@ public class Comment {
     }
 
     public boolean isShow() {
-        return isShow;
+        return show;
     }
 
     public void setShow(boolean show) {
-        isShow = show;
+        this.show = show;
     }
 }
