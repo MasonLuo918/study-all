@@ -16,5 +16,17 @@
         <module>tcp</module>
         <module>data-structure-algorithm</module>
         <module>luckysheet</module>
+        <module>dubbo</module>
+        <module>spring</module>
+        <module>jike-java</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

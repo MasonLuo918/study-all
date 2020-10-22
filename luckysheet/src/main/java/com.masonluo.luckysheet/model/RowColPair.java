@@ -1,12 +1,16 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * 合并的主单元格row、col键
  *
  * @author Masonluo
  * @date 2020-09-25 17:14
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class RowColPair {
+
     private int row;
 
     private int col;

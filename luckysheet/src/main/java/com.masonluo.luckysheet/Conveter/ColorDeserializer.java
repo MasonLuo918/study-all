@@ -7,7 +7,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.masonluo.luckysheet.model.Color;
 
 import java.io.IOException;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Masonluo
@@ -18,20 +19,15 @@ public class ColorDeserializer extends JsonDeserializer<Color> {
     public Color deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         if (p != null && p.getText() != null && !p.getText().equals("")) {
             String regex = "rgb\\((\\d+), (\\d+), (\\d+)\\)";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(p.getText());
+            if (matcher.find()) {
+                int r = Integer.valueOf(matcher.group(1));
+                int g = Integer.valueOf(matcher.group(2));
+                int b = Integer.valueOf(matcher.group(3));
+                return new Color(r, g, b);
+            }
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        String regex = "rgb\\((\\d+), (\\d+), (\\d+)\\)";
-        String color = "rgb(123, 123, 123)";
-        System.out.println(color.matches(regex));
-/*
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(color);
-        while (matcher.find()) {
-            System.out.println(matcher.groupCount());
-        } 　
-*/
     }
 }

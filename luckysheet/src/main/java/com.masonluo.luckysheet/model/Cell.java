@@ -1,6 +1,11 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.masonluo.luckysheet.Conveter.ColorDeserializer;
+import com.masonluo.luckysheet.Conveter.ColorSerializer;
 
 /**
  * 一个单元格
@@ -8,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Masonluo
  * @date 2020-09-25 15:28
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Cell {
 
     /**
@@ -19,7 +25,7 @@ public class Cell {
     /**
      * 背景颜色，格式为#fff000
      */
-    @JsonProperty("rf")
+    @JsonProperty("bg")
     private String background;
 
     /**
@@ -32,6 +38,8 @@ public class Cell {
      * 字体颜色
      */
     @JsonProperty("fc")
+    @JsonSerialize(using = ColorSerializer.class)
+    @JsonDeserialize(using = ColorDeserializer.class)
     private Color fontColor;
 
     /**
@@ -274,5 +282,30 @@ public class Cell {
 
     public void setAllowEdit(Boolean allowEdit) {
         this.allowEdit = allowEdit;
+    }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "cellType=" + cellType +
+                ", background='" + background + '\'' +
+                ", fontFamily=" + fontFamily +
+                ", fontColor=" + fontColor +
+                ", fontSize=" + fontSize +
+                ", bold=" + bold +
+                ", italic=" + italic +
+                ", cancelLine=" + cancelLine +
+                ", verticalType=" + verticalType +
+                ", horizontalType=" + horizontalType +
+                ", mergeCell=" + mergeCell +
+                ", textRotate=" + textRotate +
+                ", rotateText=" + rotateText +
+                ", textBeak=" + textBeak +
+                ", value='" + value + '\'' +
+                ", monitor='" + monitor + '\'' +
+                ", function='" + function + '\'' +
+                ", comment=" + comment +
+                ", allowEdit=" + allowEdit +
+                '}';
     }
 }

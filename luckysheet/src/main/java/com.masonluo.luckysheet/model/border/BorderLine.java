@@ -1,5 +1,9 @@
 package com.masonluo.luckysheet.model.border;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.masonluo.luckysheet.Conveter.ColorDeserializer;
+import com.masonluo.luckysheet.Conveter.LineStyleDeserializer;
 import com.masonluo.luckysheet.model.Color;
 
 import java.util.Objects;
@@ -8,9 +12,13 @@ import java.util.Objects;
  * @author Masonluo
  * @date 2020-09-27 15:02
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class BorderLine {
+
+    @JsonDeserialize(using = LineStyleDeserializer.class)
     private LineStyle style;
 
+    @JsonDeserialize(using = ColorDeserializer.class)
     private Color color;
 
     public LineStyle getStyle() {

@@ -1,5 +1,7 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * @author Masonluo
  * @date 2020-09-25 16:12
@@ -10,7 +12,14 @@ public enum Font {
     TAHOMA(2, "Verdana"),
     VERDANA(3, "Verdana"),
     MICROSOFT_YAHEI(4, "Microsoft yahei"),
-    SONG(5, "song");
+    SONG(5, "Song"),
+    ST_HEITI(6, "St Heiti"),
+    ST_KAITI(7, "St Kaiti"),
+    ST_FANGSONG(8, "St FangSong"),
+    ST_SONG(9, "St SONG"),
+    CHINESE_NEW_WEI(10, "华文新魏"),
+    CHINESE_BLOCK_LETTERS(11, "华文行楷"),
+    CHINESE_LI(12, "华文隶书");
     private int id;
 
     private String font;
@@ -20,6 +29,7 @@ public enum Font {
         this.font = font;
     }
 
+    @JsonValue
     public int getId() {
         return id;
     }
@@ -34,5 +44,13 @@ public enum Font {
 
     public void setFont(String font) {
         this.font = font;
+    }
+
+    @Override
+    public String toString() {
+        return "Font{" +
+                "id=" + id +
+                ", font='" + font + '\'' +
+                '}';
     }
 }

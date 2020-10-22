@@ -1,15 +1,33 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author Masonluo
  * @date 2020-09-25 17:06
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class InitialCell {
+    @JsonProperty("r")
     private String row;
 
+    @JsonProperty("c")
     private String col;
 
+    @JsonProperty("v")
     private Cell value;
+
+
+    public InitialCell() {
+    }
+
+    public InitialCell(String row, String col, Cell value) {
+        this.row = row;
+        this.col = col;
+        this.value = value;
+    }
+
 
     public String getRow() {
         return row;
@@ -35,9 +53,12 @@ public class InitialCell {
         this.value = value;
     }
 
-    public InitialCell(String row, String col, Cell value) {
-        this.row = row;
-        this.col = col;
-        this.value = value;
+    @Override
+    public String toString() {
+        return "InitialCell{" +
+                "row='" + row + '\'' +
+                ", col='" + col + '\'' +
+                ", value=" + value +
+                '}';
     }
 }

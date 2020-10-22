@@ -1,5 +1,6 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -8,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Masonluo
  * @date 2020-09-25 16:44
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Comment {
 
     /**
@@ -93,5 +95,17 @@ public class Comment {
 
     public void setShow(boolean show) {
         this.show = show;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "left=" + left +
+                ", top=" + top +
+                ", width=" + width +
+                ", height=" + height +
+                ", value='" + value + '\'' +
+                ", show=" + show +
+                '}';
     }
 }

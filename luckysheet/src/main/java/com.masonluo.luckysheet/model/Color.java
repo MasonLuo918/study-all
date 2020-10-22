@@ -1,17 +1,24 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * (r,g,b) 三原色
  *
  * @author Masonluo
  * @date 2020-09-25 16:04
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Color {
     private int r;
 
     private int g;
 
     private int b;
+
+    public Color() {
+    }
 
     public Color(int r, int g, int b) {
         this.r = r;
@@ -43,6 +50,7 @@ public class Color {
         this.b = b;
     }
 
+    @JsonValue
     @Override
     public String toString() {
         return "rgb(" + r + "," + g + "," + b + ")";

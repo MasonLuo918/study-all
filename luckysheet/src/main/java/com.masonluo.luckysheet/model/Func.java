@@ -1,11 +1,15 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Arrays;
 
 /**
  * @author Masonluo
  * @date 2020-09-27 15:26
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Func {
 
     /**
@@ -36,7 +40,7 @@ public class Func {
      * 采用什么算法，"w"为深度优先搜索，"b"为普通计算
      */
     @JsonProperty("color")
-    private String alogrithm;
+    private String algorithm;
 
     /**
      * TODO 未知属性
@@ -47,7 +51,7 @@ public class Func {
     /**
      * TODO 未知属性
      */
-    @JsonProperty("children")
+    @JsonProperty("chidren")
     private Object children;
 
     @JsonProperty("times")
@@ -85,12 +89,12 @@ public class Func {
         this.func = func;
     }
 
-    public String getAlogrithm() {
-        return alogrithm;
+    public String getAlgorithm() {
+        return algorithm;
     }
 
-    public void setAlogrithm(String alogrithm) {
-        this.alogrithm = alogrithm;
+    public void setAlgorithm(String algorithm) {
+        this.algorithm = algorithm;
     }
 
     public Object getParent() {
@@ -115,5 +119,19 @@ public class Func {
 
     public void setTimes(int times) {
         this.times = times;
+    }
+
+    @Override
+    public String toString() {
+        return "Func{" +
+                "row=" + row +
+                ", col=" + col +
+                ", index=" + index +
+                ", func=" + Arrays.toString(func) +
+                ", algorithm='" + algorithm + '\'' +
+                ", parent=" + parent +
+                ", children=" + children +
+                ", times=" + times +
+                '}';
     }
 }

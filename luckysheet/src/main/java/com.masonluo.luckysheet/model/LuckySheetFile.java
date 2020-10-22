@@ -1,5 +1,7 @@
 package com.masonluo.luckysheet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.masonluo.luckysheet.annotation.ServerDoesNotNeed;
 import com.masonluo.luckysheet.model.border.Range;
@@ -11,6 +13,7 @@ import java.util.List;
  * @author Masonluo
  * @date 2020-09-25 17:09
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class LuckySheetFile {
     /**
      * luckeysheet 名字
@@ -22,7 +25,7 @@ public class LuckySheetFile {
      * luckysheet 颜色
      */
     @JsonProperty("color")
-    private Color color;
+    private String color;
 
     /**
      * 工作表的索引
@@ -69,12 +72,14 @@ public class LuckySheetFile {
     /**
      * 左右滚动条位置
      */
+    @ServerDoesNotNeed
     @JsonProperty("scrollLeft")
     private Integer scrollLeft;
 
     /**
      * 上下滚动条位置
      */
+    @ServerDoesNotNeed
     @JsonProperty("scrollTop")
     private Integer scrollTop;
 
@@ -117,7 +122,8 @@ public class LuckySheetFile {
     /**
      * 实际上的数据
      */
-    @JsonProperty("data")
+    @ServerDoesNotNeed
+    @JsonIgnore
     private Cell[][] data;
 
     /**
@@ -130,13 +136,13 @@ public class LuckySheetFile {
     /**
      * TODO 未知属性
      */
-    @JsonProperty("pivotTable")
+    @JsonProperty("isPivotTable")
     private boolean pivotTable;
 
     /**
      * TODO 未知属性
      */
-    @JsonProperty("pivot_table_config")
+    @JsonProperty("pivotTable")
     private Object pivotTableConfig;
 
     /**
@@ -156,6 +162,12 @@ public class LuckySheetFile {
      */
     @JsonProperty("luckysheet_alternateformat_save")
     private Object luckysheetAlternateFormatSave;
+
+    /**
+     * TODO 未知属性
+     */
+    @JsonProperty("luckysheet_selection_range")
+    private Object luckysheetSelectionRange;
 
     /**
      * TODO 未知属性
@@ -193,6 +205,8 @@ public class LuckySheetFile {
     @JsonProperty("allowEdit")
     private boolean allowEdit;
 
+    private Integer status;
+
     /**
      * 缩放比例
      */
@@ -207,11 +221,11 @@ public class LuckySheetFile {
         this.name = name;
     }
 
-    public Color getColor() {
+    public String getRgbColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setRgbColor(String color) {
         this.color = color;
     }
 
@@ -447,11 +461,19 @@ public class LuckySheetFile {
         this.data = data;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "LuckySheetFile{" +
                 "name='" + name + '\'' +
-                ", color=" + color +
+                ", rgbColor=" + color +
                 ", index=" + index +
                 ", order=" + order +
                 ", hide=" + hide +
@@ -461,8 +483,14 @@ public class LuckySheetFile {
                 ", config=" + config +
                 ", scrollLeft=" + scrollLeft +
                 ", scrollTop=" + scrollTop +
-                ", luckysheetSelectSave=" + luckysheetSelectSave +
                 ", calcChain=" + calcChain +
+                ", visibleDataRow=" + visibleDataRow +
+                ", visibleDataColumn=" + visibleDataColumn +
+                ", sheetWidth=" + sheetWidth +
+                ", sheetHeight=" + sheetHeight +
+                ", load=" + load +
+                ", data=" + Arrays.toString(data) +
+                ", luckysheetSelectSave=" + luckysheetSelectSave +
                 ", pivotTable=" + pivotTable +
                 ", pivotTableConfig=" + pivotTableConfig +
                 ", filterSelect=" + filterSelect +
@@ -472,15 +500,10 @@ public class LuckySheetFile {
                 ", luckysheetConditionFormatSave=" + luckysheetConditionFormatSave +
                 ", frozen=" + frozen +
                 ", chart=" + chart +
-                ", allowEdit=" + allowEdit +
-                ", zoomRatio=" + zoomRatio +
                 ", image=" + image +
-                ", visibleDataRow=" + visibleDataRow +
-                ", visibleDataColumn=" + visibleDataColumn +
-                ", sheetWidth=" + sheetWidth +
-                ", sheetHeight=" + sheetHeight +
-                ", load=" + load +
-                ", data=" + Arrays.toString(data) +
+                ", allowEdit=" + allowEdit +
+                ", status=" + status +
+                ", zoomRatio=" + zoomRatio +
                 '}';
     }
 }

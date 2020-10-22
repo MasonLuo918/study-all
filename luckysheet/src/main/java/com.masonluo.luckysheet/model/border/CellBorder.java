@@ -1,20 +1,30 @@
 package com.masonluo.luckysheet.model.border;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author Masonluo
  * @date 2020-09-27 15:16
  */
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class CellBorder {
+    @JsonProperty("row_index")
     private Integer rowIndex;
 
+    @JsonProperty("col_index")
     private Integer colIndex;
 
+    @JsonProperty("l")
     private BorderLine left;
 
+    @JsonProperty("r")
     private BorderLine right;
 
+    @JsonProperty("t")
     private BorderLine top;
 
+    @JsonProperty("b")
     private BorderLine bottom;
 
     public Integer getRowIndex() {
@@ -63,5 +73,17 @@ public class CellBorder {
 
     public void setBottom(BorderLine bottom) {
         this.bottom = bottom;
+    }
+
+    @Override
+    public String toString() {
+        return "CellBorder{" +
+                "rowIndex=" + rowIndex +
+                ", colIndex=" + colIndex +
+                ", left=" + left +
+                ", right=" + right +
+                ", top=" + top +
+                ", bottom=" + bottom +
+                '}';
     }
 }
